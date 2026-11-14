@@ -1,0 +1,12 @@
+services:
+  tuneharbor:
+    image: ghcr.io/team-hgreat/tuneharbor:latest
+    container_name: tuneharbor
+    restart: unless-stopped
+    ports:
+      - "8555:8000"            # web UI: http://<server>:8555
+    environment:
+      - TZ=Europe/Vienna       # your time zone (show schedules)
+    volumes:
+      - ./tuneharbor-data:/data   # database, playlists, statistics, recordings
+      - /path/to/your/music:/library   # your music library
